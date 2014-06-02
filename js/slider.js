@@ -44,33 +44,7 @@ $(function(){
     // 変数入れとく
     $leftlayer = $container.find('.layer').eq(0);
     $rightlayer = $container.find('.layer').eq(1);
-    center();
   }
-
-  function center(){
-   //  // ウィンドウ幅からlistの幅を引いたものを半分、そこからli幅に
-   //  // shiftかけたものひく
-   //  var _val = ($window.width() - lw) / 2 - lw * shift;
-   //  // ulのwidthに、liの幅にliの個数を掛けたものを設定して、liを横並びにします。
-   // // ulのleftに、_valを設定して画像が中央に表示されるようにします。
-   //  $element.css({
-   //    "width" : lw * len,
-   //    "left" : _val
-   //  });
-   //  // $leftlayerのleftに、変数_valにliの幅を足し設定します。
-   //  // これにより、透明のdivが中央のliの左隣に重なり誤クリックを防ぎます。
-   //  $leftlayer.css('left', _val + lw);
-   //  // $rightlayerのleftに、変数_valにliの幅に3を掛けた値を足し設定します。
-   //  // これにより、透明のdivが中央のliの右隣に重なり誤クリックを防ぎます。
-   //  $rightlayer.css('left', _val + lw * 3);
-  }
-
-
-  // var $sliderblock = $(".slider").find("ul"),
-  //   element = $sliderblock.find("li"),
-  //   eachelement = element.length;
-  //   console.log("a", element.length);
-
 
   function slideShow(dir){
     // ulがアニメーション中なら、以降の処理を中断します。
@@ -85,12 +59,6 @@ $(function(){
     val = (dir)? -lw: lw;
     console.log("val", val);
 
-    // $(".slider ul").animate({
-    //   "marginLeft":val
-    // }, firststep.duration,firststep.easing,callback).animate({
-    //   "marginLeft":val
-    // },0);
-    // setTimeout("",10000);
     $(".slider ul").animate({
       "marginLeft":val
     }, firststep.duration,firststep.easing,callback);
@@ -98,7 +66,6 @@ $(function(){
 
   function callback(){
     // 関数slideで定義した変数valが、0より小さければ最初のliを最後に移動させ、0より大きければ最後のliを最初に移動させる
-    // (0 > val)? $element.find('li').eq(0).remove().appendTo($element): $element.find('li').eq(len - 1).remove().prependTo($element);
     if(0 > val){
       $element.find('li').eq(0).remove().appendTo($element);
     }else{
