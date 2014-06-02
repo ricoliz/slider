@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+html,body{
+	margin:0;
+	width:100%;
+/*	width:2280px;*/
+}
+
+.slider{
+	margin: 0 auto;
+	/*position: relative;*/
+	/*width: 980px;*/
+	/*height:300px;*/
+	/*text-align: left;*/
+	overflow: hidden;
+	background: url(../images/loading.gif) no-repeat center center;
+}
+/*.slider{
+	width:980px;
+}*/
+.slider ul{
+	width:4000px;
+}
+.slider li{
+	float:left;
+	width:400px;
+}
+
+
+.slider #prev,
+.slider #next{
+	position: absolute;
+	overflow: hidden;
+	z-index: 100;
+	cursor: pointer;
+	top:120px;
+}
+.slider #prev{
+	left:20px;
+}
+.slider #next{
+	right:20px;
+}
+/*.slider li:first-child{
+	margin-left: 290px;
+}*/
+
+
+/* =======================================
+	ClearFixElements
+======================================= */
+.slider ul:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	display: block;
+	visibility: hidden;
+}
+
+.slider ul {
+	display: inline-block;
+	overflow: hidden;
+}
+
+
+/*#animate{
+	width: 100px;
+	height: 100px;
+	background: red;
+}*/
+
+
+#header{
+	width: 100%;
+}
+#header h1{
+	padding: 10px 0;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background: -moz-linear-gradient(top, #fff 0%, #ccc);
+}
+#header h1 span{
+	display: block;
+}
+#header #nav{
+	background: #333;
+}
+#header #nav li{
+	float: left;
+}
+#header #nav a{
+	display: block;
+	padding: 15px;
+	text-decoration: none;
+	color: #fff;
+	font-family: normal Arial,Helvetica,sans-serif;
+}
+#header #nav a:hover{
+	color: #ccc;
+	background: #000;
+}
