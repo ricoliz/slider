@@ -2,7 +2,7 @@ $(function(){
 
   var firststep = {
     duration: 400,
-    auto: true,
+    auto: false,
     easing:'easeOutSine',
     interval: 3000
   };
@@ -16,19 +16,23 @@ $(function(){
     shift = 2,
     lw = $list.width(),
     len = $list.length,
+    w_width = $(window).width(),
     timer = '';
+
 
   function go(){
     setting();
-    $window.on('center', center);
+    // $(window).on('center', center);
+    // center();
     $next.on('click', function(){ slideShow(true); });
     $prev.on('click', function(){ slideShow(false); });
     load();
-    // 変数firststepのautoがtrueなら、関数sliderの引数にtrueを渡して一定間隔で実行します。
-    // 間隔は変数firststepのintervalに従います。
+    // 変数firststepのautoがtrueなら、関数sliderの引数にtrueを渡して一定間隔で実行。
+    // 間隔は変数firststepのintervalに従う。
     if(firststep.auto){
       timer = setInterval(function(){ slideShow(true); }, firststep.interval);
     }
+    console.log("go",lw);
   }
 
   // firstview
@@ -44,7 +48,40 @@ $(function(){
     // 変数入れとく
     $leftlayer = $container.find('.layer').eq(0);
     $rightlayer = $container.find('.layer').eq(1);
+    console.log("setting",lw);
   }
+
+  // function center(){
+
+  //   // var val2 = (w_width - lw) / 2 - lw * shift;
+  //   // $element.css({
+  //   //   'width': lw * len,
+  //   //   'left': val2
+  //   // });
+
+  //   var val2 = (w_width - lw) / 2;
+  //   $element.css({
+  //     // width: lw * len,
+  //     marginleft: val2
+  //   });
+
+  //   console.log("val2",val2);
+  // }
+
+  // function center(){
+  //   var left = (w_width - lw)/2;
+  //   console.log(w_width);
+  //   console.log(lw);
+  //   console.log(left);
+  //   $element.css({
+  //     'left' : left,
+  //     'top' : 0
+  //   });
+
+  //   // $element.css("position","relative");
+  //   // $element.css("left", ($(window).width() - this.width())/2 + $(window).scrollLeft() + "px");
+  //   // return this;
+  // }
 
   function slideShow(dir){
     // ulがアニメーション中なら、以降の処理を中断します。
@@ -54,7 +91,7 @@ $(function(){
     if(firststep.auto){
       clearInterval(timer);
     }
-    console.log("firststep.auto",firststep.auto);
+    console.log("firststep.auto&slideshow",firststep.auto);
     // もしdir内がtrueならliの幅の分だけマイナス。falseならliの幅の値を入れる。
     val = (dir)? -lw: lw;
     console.log("val", val);
@@ -74,12 +111,14 @@ $(function(){
 
     // 関数slideで、ulをanimateさせた時に付与されたmarginleftの値をリセットします。
     $element.css('marginLeft', 0);
+    console.log("callback",lw);
     // 変数firststepのautoがtrueなら、自動スライドを開始します。
     if(firststep.auto){
       timer = setInterval(function(){ slideShow(true); }, firststep.interval);
     }
   }
   function load(){
+    console.log("load",lw);
     // 非表示にしているDOMを配列に入れます。
     var array = [$element, $next, $prev];
     // 配列に入っているDOMを全て表示します。
